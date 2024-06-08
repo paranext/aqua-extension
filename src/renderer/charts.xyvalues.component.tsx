@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
 import { ApexOptions } from 'apexcharts';
 import Chart from 'react-apexcharts';
+import { logger } from '@papi/frontend';
 import { XValuesForY, XYValuesInfoInfoContext, XValue } from './xyvaluesinfo.context';
 import { DualSlider } from './dualslider.component';
 import { ChartXYValues } from './chart.xyvalues';
-import { logger } from '@papi/frontend';
 
 export enum SliderMode {
   Ranges = 1,

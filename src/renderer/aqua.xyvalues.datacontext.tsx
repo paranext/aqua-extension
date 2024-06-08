@@ -5,6 +5,7 @@ import { AquaService } from 'src/shared/services/aqua.service';
 import type { Result } from 'paranext-extension-dashboard';
 import { Canon } from '@sillsdev/scripture';
 import { Spinner } from '@chakra-ui/react';
+import { logger } from '@papi/frontend';
 import { EnvironmentContext } from './environment.context';
 import { AquaMode, AquaStateManager } from './aqua.statemanager';
 import {
@@ -15,7 +16,6 @@ import {
   OnXYSelected,
   XY,
 } from './xyvaluesinfo.context';
-import { logger } from '@papi/frontend';
 
 export type NameType = 'books' | 'chapters';
 export type XType = 'chapters' | 'verses';
