@@ -18,23 +18,26 @@ export class AquaDataProviderEngine
 
   constructor(token: ExecutionToken, prefix: string) {
     super();
-
+    const toke =
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwbGF0Zm9ybS5iaWJsZS50ZXN0IiwiaXNfYWRtaW4iOmZhbHNlLCJleHAiOjE3MTgzNzgyOTZ9.6zo31tGDC94u1VjW1tWZcA8vfOim5im6hgxCyfeWWeo';
     this.aquaService = new AquaService(
-      'https://fxmhfbayk4.us-east-1.awsapprunner.com/v2',
+      'https://tmv9bz5v4q.us-east-1.awsapprunner.com/latest',
       {
-        // mode: 'no-cors',
+        mode: 'no-cors',
         headers: {
-          api_key: '7cf43ae52dw8948ddb663f9cae24488a4',
-          // origin: "https://fxmhfbayk4.us-east-1.awsapprunner.com",
+          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwbGF0Zm9ybS5iaWJsZS50ZXN0IiwiaXNfYWRtaW4iOmZhbHNlLCJleHAiOjE3MTgzNzgyOTZ9.6zo31tGDC94u1VjW1tWZcA8vfOim5im6hgxCyfeWWeo`,
         },
         // credentials: "include",
       },
       httpPapiBackRequester,
       new ExtensionStoragePersist(token, prefix),
     );
+
+    console.log('AquaService initialized');
   }
 
   async getResults({ assessmentId, book, aggregateByChapter }: ResultsSelector): Promise<Results> {
+    console.log('getResults called');
     const results = await this.aquaService.getResults({ assessmentId, book, aggregateByChapter });
     return results;
   }

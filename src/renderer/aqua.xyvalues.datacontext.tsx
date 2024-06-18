@@ -43,14 +43,15 @@ export function AquaXYValuesDataContext({
     highlightedXY: undefined,
     onXYSelected: () => {},
   });
+  const toke =
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwbGF0Zm9ybS5iaWJsZS50ZXN0IiwiaXNfYWRtaW4iOmZhbHNlLCJleHAiOjE3MTgzNzgyOTZ9.6zo31tGDC94u1VjW1tWZcA8vfOim5im6hgxCyfeWWeo';
   const [aquaService] = useState(
     new AquaService(
-      'https://fxmhfbayk4.us-east-1.awsapprunner.com/v2',
+      'https://tmv9bz5v4q.us-east-1.awsapprunner.com/latest',
       {
-        // mode: 'no-cors',
+        mode: 'no-cors',
         headers: {
-          api_key: '7cf43ae52dw8948ddb663f9cae24488a4',
-          // origin: "https://fxmhfbayk4.us-east-1.awsapprunner.com",
+          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwbGF0Zm9ybS5iaWJsZS50ZXN0IiwiaXNfYWRtaW4iOmZhbHNlLCJleHAiOjE3MTgzNzgyOTZ9.6zo31tGDC94u1VjW1tWZcA8vfOim5im6hgxCyfeWWeo`,
         },
         // credentials: "include",
       },
@@ -177,8 +178,7 @@ export function AquaXYValuesDataContext({
         if (!isLoading) setIsLoading(true);
         if (stateManager.currentState.mode === AquaMode.VerseResultsForBookChapters) {
           const [results, id] = await aquaService.getResults({
-            // eslint-disable-next-line no-type-assertion/no-type-assertion
-            assessmentId: parseInt(assessmentId!, 10),
+            assessmentId: 1534,
             book: stateManager.currentStateBook,
           });
           if (!ignore) {
@@ -197,8 +197,7 @@ export function AquaXYValuesDataContext({
           }
         } else if (stateManager.currentState.mode === AquaMode.ChapterResultsForBooks) {
           const [results, id] = await aquaService.getResults({
-            // eslint-disable-next-line no-type-assertion/no-type-assertion
-            assessmentId: parseInt(assessmentId!, 10),
+            assessmentId: 1,
             aggregateByChapter: true,
           });
           if (!ignore) {
@@ -227,14 +226,7 @@ export function AquaXYValuesDataContext({
     return () => {
       ignore = true;
     };
-  }, [
-    aquaService,
-    assessmentId,
-    isLoading,
-    onXYSelected,
-    xyValuesInfo.highlightedXY,
-    stateManager,
-  ]);
+  }, [aquaService, isLoading, onXYSelected, xyValuesInfo.highlightedXY, stateManager]);
 
   return (
     <XYValuesInfoInfoContext.Provider value={xyValuesInfo}>
