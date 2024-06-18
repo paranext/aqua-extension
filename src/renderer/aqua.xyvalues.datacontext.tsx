@@ -43,15 +43,16 @@ export function AquaXYValuesDataContext({
     highlightedXY: undefined,
     onXYSelected: () => {},
   });
-  const toke =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwbGF0Zm9ybS5iaWJsZS50ZXN0IiwiaXNfYWRtaW4iOmZhbHNlLCJleHAiOjE3MTgzNzgyOTZ9.6zo31tGDC94u1VjW1tWZcA8vfOim5im6hgxCyfeWWeo';
+  const tokens = localStorage.getItem('token');
+  // const toke =
+  //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwbGF0Zm9ybS5iaWJsZS50ZXN0IiwiaXNfYWRtaW4iOmZhbHNlLCJleHAiOjE3MTgzNzgyOTZ9.6zo31tGDC94u1VjW1tWZcA8vfOim5im6hgxCyfeWWeo';
   const [aquaService] = useState(
     new AquaService(
       'https://tmv9bz5v4q.us-east-1.awsapprunner.com/latest',
       {
         mode: 'no-cors',
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwbGF0Zm9ybS5iaWJsZS50ZXN0IiwiaXNfYWRtaW4iOmZhbHNlLCJleHAiOjE3MTgzNzgyOTZ9.6zo31tGDC94u1VjW1tWZcA8vfOim5im6hgxCyfeWWeo`,
+          Authorization: `Bearer ${tokens}`,
         },
         // credentials: "include",
       },
